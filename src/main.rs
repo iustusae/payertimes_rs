@@ -1,6 +1,9 @@
-use chrono::Local;
+use chrono::{Datelike, Local};
 use core::str;
+use reqwest::blocking::get;
 use reqwest::Error;
+use serde::Deserialize;
+use serde_json::Value;
 use std::process::Command;
 
 #[derive(serde::Deserialize)]
@@ -22,17 +25,17 @@ struct Data {
 
 #[derive(serde::Deserialize)]
 struct Timings {
-    fajr: String,
-    sunrise: String,
-    dhuhr: String,
-    asr: String,
-    sunset: String,
-    maghrib: String,
-    isha: String,
-    imsak: String,
-    midnight: String,
-    firstthird: String,
-    lastthird: String,
+    Fajr: String,
+    Sunrise: String,
+    Dhuhr: String,
+    Asr: String,
+    Sunset: String,
+    Maghrib: String,
+    Isha: String,
+    Imsak: String,
+    Midnight: String,
+    Firstthird: String,
+    Lastthird: String,
 }
 
 fn main() -> Result<(), Error> {
@@ -75,17 +78,17 @@ fn main() -> Result<(), Error> {
     // Print the response code and timings
     println!("Response Code: {}", response.code);
     println!("Prayer Times:");
-    println!("Fajr: {}", response.data.timings.fajr);
-    println!("Sunrise: {}", response.data.timings.sunrise);
-    println!("Dhuhr: {}", response.data.timings.dhuhr);
-    println!("Asr: {}", response.data.timings.asr);
-    println!("Sunset: {}", response.data.timings.sunset);
-    println!("Maghrib: {}", response.data.timings.maghrib);
-    println!("Isha: {}", response.data.timings.isha);
-    println!("Imsak: {}", response.data.timings.imsak);
-    println!("Midnight: {}", response.data.timings.midnight);
-    println!("First third: {}", response.data.timings.firstthird);
-    println!("Last third: {}", response.data.timings.lastthird);
+    println!("Fajr: {}", response.data.timings.Fajr);
+    println!("Sunrise: {}", response.data.timings.Sunrise);
+    println!("Dhuhr: {}", response.data.timings.Dhuhr);
+    println!("Asr: {}", response.data.timings.Asr);
+    println!("Sunset: {}", response.data.timings.Sunset);
+    println!("Maghrib: {}", response.data.timings.Maghrib);
+    println!("Isha: {}", response.data.timings.Isha);
+    println!("Imsak: {}", response.data.timings.Imsak);
+    println!("Midnight: {}", response.data.timings.Midnight);
+    println!("First third: {}", response.data.timings.Firstthird);
+    println!("Last third: {}", response.data.timings.Lastthird);
 
     Ok(())
 }
